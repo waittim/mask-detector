@@ -1,0 +1,16 @@
+./modeling/data/images/test_00002284.jpg
+./modeling/data/images/test_00002645.jpg
+./modeling/data/images/test_00002352.jpg
+./modeling/data/images/61_Street_Battle_streetfight_61_832.jpg
+./modeling/data/images/test_00003077.jpg
+./modeling/data/images/test_00000225.jpg
+./modeling/data/images/test_00004725.jpg
+./modeling/data/images/test_00003114.jpg
+./modeling/data/images/13_Interview_Interview_On_Location_13_55.jpg
+./modeling/data/images/8_Election_Campain_Election_Campaign_8_451.jpg
+./modeling/data/images/test_00003866.jpg
+./modeling/data/images/38_Tennis_Tennis_38_600.jpg
+./modeling/data/images/28_Sports_Fan_Sports_Fan_28_153.jpg
+./modeling/data/images/test_00003140.jpg
+./modeling/data/images/1_Handshaking_Handshaking_1_830.jpg
+./modeling/data/images/31_Waiter_Waitress_Waiter_Waitress_31_158.jpg

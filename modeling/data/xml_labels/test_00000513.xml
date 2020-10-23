@@ -1,0 +1,26 @@
+<annotation>
+	<folder>val_mafa</folder>
+	<filename>test_00000513.jpg</filename>
+	<path>C:\Users\Administrator\Desktop\files\val_mafa\val_mafa\test_00000513.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>651</width>
+		<height>985</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>face_mask</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>352</xmin>
+			<ymin>158</ymin>
+			<xmax>472</xmax>
+			<ymax>340</ymax>
+		</bndbox>
+	</object>
+</annotation>

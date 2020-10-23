@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train_mafa</folder>
+	<filename>test_00000888.jpg</filename>
+	<path>/home/daniel/Data/Dataset/FaceMaskNew/train_mafa/test_00000888.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>532</width>
+		<height>757</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>face_mask</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>98</xmin>
+			<ymin>352</ymin>
+			<xmax>170</xmax>
+			<ymax>465</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>val</folder>
+	<filename>28_Sports_Fan_Sports_Fan_28_130.jpg</filename>
+	<path>/home/daniel/Data/Dataset/FaceMaskNew/val/28_Sports_Fan_Sports_Fan_28_130.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>754</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>face</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>92</xmin>
+			<ymin>1</ymin>
+			<xmax>924</xmax>
+			<ymax>688</ymax>
+		</bndbox>
+	</object>
+</annotation>

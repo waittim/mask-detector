@@ -1,0 +1,26 @@
+<annotation>
+	<folder>val</folder>
+	<filename>20_Family_Group_Family_Group_20_453.jpg</filename>
+	<path>/home/daniel/Data/Dataset/FaceMaskNew/val/20_Family_Group_Family_Group_20_453.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1450</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>face</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>1</difficult>
+		<bndbox>
+			<xmin>450</xmin>
+			<ymin>444</ymin>
+			<xmax>583</xmax>
+			<ymax>594</ymax>
+		</bndbox>
+	</object>
+</annotation>
