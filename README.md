@@ -1,6 +1,7 @@
 # mask-detector
 Offline real-time video streaming mask detection built in the browser. Designed to defeat COVID-19.
 
+Modeling part based on https://github.com/ultralytics/yolov3
 
 Resources:
 - A similar workflow based on Tensorflow for this project. Provided an overview to understand the whole project. https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/
