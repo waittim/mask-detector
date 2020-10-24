@@ -24,14 +24,15 @@ $ pip install -r requirements.txt
 
 **Plot Training:** `from utils import utils; utils.plot_results()`
 
-<img src="https://user-images.githubusercontent.com/26833433/78175826-599d4800-7410-11ea-87d4-f629071838f6.png" width="900">
+
+<img src="https://github.com/waittim/mask-detector/blob/master/modeling/results.png" width="900">
 
 
 ### Image Augmentation
 
 `datasets.py` applies OpenCV-powered (https://opencv.org/) augmentation to the input image. We use a **mosaic dataloader** to increase image variability during training.
 
-<img src="https://user-images.githubusercontent.com/26833433/80769557-6e015d00-8b02-11ea-9c4b-69310eb2b962.jpg" width="900">
+<img src="https://github.com/waittim/mask-detector/blob/master/modeling/test_batch0_gt.jpg" width="900">
 
 
 ### Speed
@@ -66,14 +67,10 @@ python3 detect.py --source ...
 - RTSP stream:  `--source rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa`
 - HTTP stream:  `--source http://112.50.243.8/PLTV/88888888/224/3221225900/1.m3u8`
 
-**YOLOv3:** `python3 detect.py --cfg cfg/yolov3.cfg --weights yolov3.pt`  
-<img src="https://user-images.githubusercontent.com/26833433/64067835-51d5b500-cc2f-11e9-982e-843f7f9a6ea2.jpg" width="500">
 
-**YOLOv3-tiny:** `python3 detect.py --cfg cfg/yolov3-tiny.cfg --weights yolov3-tiny.pt`  
-<img src="https://user-images.githubusercontent.com/26833433/64067834-51d5b500-cc2f-11e9-9357-c485b159a20b.jpg" width="500">
+**YOLO-Fastest with webcam:** `python3 detect.py --cfg cfg/yolo-fastest.cfg --weights weights/best.pt --source 0`
 
-**YOLOv3-SPP:** `python3 detect.py --cfg cfg/yolov3-spp.cfg --weights yolov3-spp.pt`  
-<img src="https://user-images.githubusercontent.com/26833433/64067833-51d5b500-cc2f-11e9-8208-6fe197809131.jpg" width="500">
+
 
 
 ## Pretrained Checkpoints
