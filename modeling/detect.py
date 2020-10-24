@@ -71,7 +71,8 @@ def detect(save_img=False):
 
     # Get names and colors
     names = load_classes(opt.names)
-    colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(names))]
+    #colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(names))]
+    colors = [[0, 69, 255], [170, 178, 32]] # Color for binary classification in B,G,R
 
     # Run inference
     t0 = time.time()
