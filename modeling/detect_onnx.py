@@ -117,7 +117,8 @@ def detect(save_img=False):
                             file.write(('%g ' * 5 + '\n') % (cls, *xywh))  # label format
 
                     if save_img or view_img:  # Add bbox to image
-                        label = '%s' % (names[int(cls)])
+                        conf = torch.sigmoid(conf)
+                        label = '%s %.2f' % (names[int(cls)], conf)
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
             # Print time (inference + NMS)
