@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="face-mask-detection/face.css">
+    <link rel="stylesheet" href="css/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
+    <!-- <link rel="stylesheet" href="css/iconicss.min.css" > -->
+    <link rel="stylesheet" href="css/fontawesome/solid.css" >
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <script> var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?3ee112c2a01837e98cbfa698c315d857"; var s =document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+    <title>AIZOO.com跑在您浏览器的口罩佩戴检测</title>
+  </head>
+  <body>
+    <header id="header"> 
+      <!-- header部分的内容使用配置文件配置 -->
+    </header>
+    
+    <main role="main" class="container" >
+      <div class="starter-template">
+        <h1 id="h_title">口罩佩戴检测</h1>
+        <p class="lead" id="description">运行在您浏览器里面的口罩佩戴检测</p>
+        <p class="lead" id="description"><small>本模型极小，只有一百万参数，如果您想要更高精度的模型，请联系我们</small></p>
+        <div class="alert alert-warning d-block d-md-none"><small>推荐使用电脑浏览器访问本网页，深度学习模型在iPhone和安卓手机上通常运行不快。</small></div>
+        <div class="alert alert-warning d-block d-md-none"><small>如果您使用的iOS设备，推荐使用safari浏览器，因为其他浏览器获取不了摄像头录制视频权限。</small></div>
+      </div>
+
+      <div class="container bg-light  text-center" id="ai_container" style=" border-radius:30px; margin:0 auto; padding-bottom: 20px;">
+        
+        <div class="row" style=" margin:0 auto; padding-top: 20px;">
+          <div class="col-9 col-sm-9 col-md-9 col-lg-9 bg-light" id="canvas_container" >
+            <!-- 画面显示canvas -->
+            <canvas id="canvas_show" style="
+                  background-color:rgb(141, 103, 103); margin:0 auto;
+                  margin-left: -20px;  margin-bottom: -7px; border-radius: 10px">
+            </canvas>    
+          </div>
+
+          <div class="col-3 col-sm-3 col-md-3 col-lg-3 bg-dark" id="img_region" style=" border-radius: 10px;">
+              <div class="row text-center" style="margin-top:25%; height:12%; display:flex; align-items: center; justify-content: center ">
+                <div style="text-align:center; margin:0 auto; width:90%">
+                  <button class="btn btn-default  btn-block btn-font text-center" id="openCameraBt">
+                      <i class="fas fa-camera fa-2x" style="display: block; color:dodgerblue;" ></i> 
+                      <span class="text-white">打开摄像头</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="row text-center" style="margin-top:15%; height:12%; display:flex; align-items: center; justify-content: center ">
+                  <div style="text-align:center; margin:0 auto; width:90%">
+                    <button class="btn btn-default btn-block btn-font" style="margin: 0 auto; background-color: inherit"
+                      id="switchCameraBt">
+                      <i class="fas fa-sync-alt fa-2x" style="display: block; color:dodgerblue;" ></i> 
+                      <span class="text-white">切换前后摄像头</span>
+                    </button>
+                  </div>
+              </div>
+
+              <div class="row text-center" style="margin-top:15%; height:12%; display:flex; align-items: center; justify-content: center ">
+                <div style="text-align:center; margin:0 auto; width:90%">
+                  <button class="btn btn-default btn-block btn-font" style="margin: 0 auto; background-color: inherit"
+                    id="closeCameraBt">
+                    <i class="fas fa-times-circle fa-2x" style="display: block; color:dodgerblue;" ></i> 
+                    <span class="text-white">关闭摄像头</span>
+                  </button>
+                </div>
+            </div>
+
+            <div class="row text-center" style="margin-top:15%; height:12%; display:flex; align-items: center; justify-content: center ">
+                <div style="text-align:center; margin:0 auto; width:90%">
+                  <button class="btn btn-default btn-block btn-font" style="margin: 0 auto; background-color: inherit"
+                    id="saveImgBt">
+                    <i class="fas fa-file-download fa-2x" style="display: block; color:dodgerblue;" ></i> 
+                    <span class="text-white">保存图片</span>
+                  </button>
+                </div>
+            </div>
+
+            <div class="row text-center" id="loadModelIndictor" style="margin-top:20%; height:12%; display:flex; align-items: center; justify-content: center ">
+              <div style="text-align:center; margin:0 auto; width:90%">
+                <div class="spinner-border spinner-border-sm text-primary">
+                </div>
+                <p class="text-white ctl-font">正在加载模型</p>
+              </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="row" id="foreground_images" style="width:100%; margin:0 auto; margin-top:10px; padding-top: 10px; background-color:#33CC99; border-radius:15px" >
+          <div class="col-12">
+              <h4>请选择图片</h4>
+          </div>
+        </div>
+      </div>
+
+    </main> 
+
+    <div class="container">
+      <h6>浏览器兼容性</h6>
+      <table class="table table-responsive table-condensed">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Chrome</th>
+            <th scope="col">Safari</th>
+            <th scope="col">Firefox</th>
+            <th scope="col">补充</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Windows</th>
+            <td>No</td>
+            <td>无</td>
+            <td>Yes</td>
+            <td>支持360安全浏览器、猎豹安全浏览器、2345加速浏览器、百度浏览器的<b>极速模式</b>，请不要选择兼容模式。其他浏览器待测试</td>
+          </tr>
+          <tr>
+            <th scope="row">安卓</th>
+            <td>Yes</td>
+            <td>无</td>
+            <td>Yes</td>
+            <td>安卓系统各浏览器支持完美</td>
+          </tr>
+          <tr>
+            <th scope="row">iOS</th>
+            <td>No</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>iOS只对Safari浏览器支持较好</td>
+          </tr>
+          <tr>
+            <th scope="row">MacOS</th>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>MacOS系统各浏览器支持完美</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu等Linux系统</th>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Linux系统各浏览器支持完美</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- <div>
+      <h6 style="text-align: center;">参考与致谢</h6>
+      <p style="text-align: center;">
+        <small>
+          <a href="https://github.com/tensorflow/tfjs-models/tree/master/body-pix">1. TensorFlow BodyPix
+          </a><br>
+          <a href="https://ml5js.org/">2. ml5.js
+          </a>
+        </small>
+      </p>
+    </div> -->
+
+   
+    <footer class="text-muted bg-dark" id="footer">
+      <!-- js设置footer -->
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://file.aizoo.com/js/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://file.aizoo.com/js/popper-1.14.7.min.js" ></script>
+    <script src="https://file.aizoo.com/js/bootstrap.min.js"></script>
+    <script src="https://file.aizoo.com/js/header_footer_builder.js"></script>
+    <!-- <script src="https://file.aizoo.com/js/face-api.min.js"></script> -->
+    <script src="https://file.aizoo.com/js/aizoo.min.js"></script>
+    <!-- <script src="./js/aizoo.min.js"></script> -->
+    <script src="https://file.aizoo.com/js/load-image.all.min.js"></script>
+
+    <script src="https://file.aizoo.com/js/basicFunction.js"></script>
+    <script src="face-mask-detection/containerAdjust.js"></script>
+    <script src="face-mask-detection/index.js"></script>
+    <script src="face-mask-detection/config.js"></script>
+    <script src="face-mask-detection/face-mask-detection.js"></script>
+    <script src="face-mask-detection/operate.js"></script>
+  </body>
+</main>
+</html>
