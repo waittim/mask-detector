@@ -3,6 +3,10 @@ import argparse
 from models import *  # set ONNX_EXPORT in models.py
 from utils.datasets import *
 from utils.utils import *
+import onnxruntime
+import onnx
+
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 
 def detect(save_img=False):
@@ -16,50 +20,17 @@ def detect(save_img=False):
         shutil.rmtree(out)  # delete output folder
     os.makedirs(out)  # make new output folder
 
-    # Initialize model
-    model = Darknet(opt.cfg, imgsz)
-
-
-
-    # Load weights
-    attempt_download(weights)
-    if weights.endswith('.pt'):  # pytorch format
-        model.load_state_dict(torch.load(weights, map_location=device)['model'])
-    else:  # darknet format
-        load_darknet_weights(model, weights)
-
     # Second-stage classifier
     classify = False
     if classify:
-        modelc = torch_utils.load_classifier(name='resnet101', n=2)  # initialize
+        modelc = load_classifier(name='resnet101', n=2)  # initialize
         modelc.load_state_dict(torch.load('weights/resnet101.pt', map_location=device)['model'])  # load weights
         modelc.to(device).eval()
 
-    # Eval mode
-    model.to(device).eval()
 
-    # Fuse Conv2d + BatchNorm2d layers
-    # model.fuse()
-
-    # Export mode
-    if ONNX_EXPORT:
-        model.fuse()
-        img = torch.zeros((1, 3) + imgsz)  # (1, 3, 320, 192)
-        f = opt.weights.replace(opt.weights.split('.')[-1], 'onnx')  # *.onnx filename
-        torch.onnx.export(model, img, f, verbose=False, opset_version=11,
-                          input_names=['images'], output_names=['classes', 'boxes'])
-
-        # Validate exported model
-        import onnx
-        model = onnx.load(f)  # Load the ONNX model
-        onnx.checker.check_model(model)  # Check that the IR is well formed
-        print(onnx.helper.printable_graph(model.graph))  # Print a human readable representation of the graph
-        return
-
-    # Half precision
-    half = half and device.type != 'cpu'  # half precision only supported on CUDA
-    if half:
-        model.half()
+    #import onnx
+    onnx_model = onnx.load('yolo-fastest.onnx')
+    onnx.checker.check_model(onnx_model)
 
     # Set Dataloader
     vid_path, vid_writer = None, None
@@ -79,7 +50,6 @@ def detect(save_img=False):
     # Run inference
     t0 = time.time()
     img = torch.zeros((1, 3, imgsz, imgsz), device=device)  # init img
-    _ = model(img.half() if half else img.float()) if device.type != 'cpu' else None  # run once
     for path, img, im0s, vid_cap in dataset:
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
@@ -93,14 +63,8 @@ def detect(save_img=False):
         # print('The output shape: ',pred.shape)
 ############################################################
 
-        os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-        import onnx
 
-        onnx_model = onnx.load("yolo-fastest.onnx")
-        onnx.checker.check_model(onnx_model)
-
-        import onnxruntime
 
         ort_session = onnxruntime.InferenceSession("yolo-fastest.onnx")
 
@@ -116,9 +80,7 @@ def detect(save_img=False):
 ############################################################
         t2 = torch_utils.time_synchronized()
 
-        # to float
-        if half:
-            pred = pred.float()
+
 
         # Apply NMS
         pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres,
@@ -155,7 +117,7 @@ def detect(save_img=False):
                             file.write(('%g ' * 5 + '\n') % (cls, *xywh))  # label format
 
                     if save_img or view_img:  # Add bbox to image
-                        label = '%s %.2f' % (names[int(cls)], conf)
+                        label = '%s' % (names[int(cls)])
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
             # Print time (inference + NMS)
@@ -193,9 +155,9 @@ def detect(save_img=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='cfg/yolo-fastest.cfg', help='*.cfg path')
+    parser.add_argument('--cfg', type=str, default='yolo-fastest.onnx', help='*.cfg path')
     parser.add_argument('--names', type=str, default='data/face_mask.names', help='*.names path')
-    parser.add_argument('--weights', type=str, default='weights/best.pt', help='weights path')
+    parser.add_argument('--weights', type=str, default='yolo-fastest.onnx', help='weights path')
     parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
     parser.add_argument('--output', type=str, default='output', help='output folder')  # output folder
     parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
