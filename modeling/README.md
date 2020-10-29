@@ -50,7 +50,7 @@ python3 detect.py --source ...
 - HTTP stream:  `--source http://112.50.243.8/PLTV/88888888/224/3221225900/1.m3u8`
 
 
-**YOLO-Fastest with webcam:** `python3 detect.py --cfg cfg/yolo-fastest.cfg --weights weights/best.pt --source 0`
+**YOLO-Fastest with webcam:** `python3 detect.py --source 0`
 
 
 
