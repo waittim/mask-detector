@@ -1,0 +1,52 @@
+import { Attribute } from '../../../attribute';
+import { UnaryOp } from '../../../ops/unary-op';
+import { Tensor } from '../../../tensor';
+import { CpuInferenceHandler } from '../inference-handler';
+declare type UnaryOpCoreFunction<T> = (input: Tensor.NumberType, output: Tensor.NumberType, attributes?: T) => void;
+export declare class CpuUnaryOp<T = unknown> extends UnaryOp {
+    private func;
+    private attributesInitializer?;
+    private attributes?;
+    constructor(typeConstraint: ReadonlyArray<Tensor.DataType>, func: UnaryOpCoreFunction<T>, attributesInitializer?: ((attributes: Attribute) => T) | undefined, resultType?: Tensor.DataType);
+    initialize(attributes: Attribute): void;
+    run(inferenceHandler: CpuInferenceHandler, inputs: Tensor[]): Tensor[];
+}
+export declare function unaryOp<T>(x: Tensor, func: UnaryOpCoreFunction<T>, attributes: T, resultType?: Tensor.DataType): Tensor;
+export declare function abs(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function acos(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function acosh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function asin(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function asinh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function atan(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function atanh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function ceil(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function clipInitializer(attributes: Attribute): {
+    min: number;
+    max: number;
+};
+export declare function clip(input: Tensor.NumberType, output: Tensor.NumberType, attributes: {
+    min: number;
+    max: number;
+}): void;
+export declare function cos(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function cosh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function eluInitializer(attributes: Attribute): number;
+export declare function elu(input: Tensor.NumberType, output: Tensor.NumberType, attributes: number): void;
+export declare function exp(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function floor(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function isNan(input: Tensor.NumberType, output: Tensor.BooleanType): void;
+export declare function leakyReluInitializer(attributes: Attribute): number;
+export declare function leakyRelu(input: Tensor.NumberType, output: Tensor.NumberType, attributes: number): void;
+export declare function log(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function neg(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function not(input: Tensor.BooleanType, output: Tensor.BooleanType): void;
+export declare function reciprocal(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function relu(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function sigmoid(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function sign(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function sin(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function sinh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function sqrt(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function tan(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export declare function tanh(input: Tensor.NumberType, output: Tensor.NumberType): void;
+export {};

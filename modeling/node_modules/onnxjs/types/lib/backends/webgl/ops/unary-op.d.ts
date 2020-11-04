@@ -1,0 +1,31 @@
+import { UnaryOp } from '../../../ops/unary-op';
+import { Tensor } from '../../../tensor';
+import { GlslValueFunction } from '../glsl-definitions';
+import { WebGLInferenceHandler } from '../inference-handler';
+import { ProgramInfo, RunData, WebGLOperator } from '../types';
+export declare class WebGLUnaryOp extends UnaryOp implements WebGLOperator {
+    protected typeConstraint: ReadonlyArray<Tensor.DataType>;
+    protected glslFunc: GlslValueFunction;
+    constructor(typeConstraint: ReadonlyArray<Tensor.DataType>, glslFunc: GlslValueFunction);
+    run(inferenceHandler: WebGLInferenceHandler, inputs: Tensor[]): Tensor[];
+    createProgramInfo(handler: WebGLInferenceHandler, inputs: Tensor[]): ProgramInfo;
+    createRunData(handler: WebGLInferenceHandler, programInfo: ProgramInfo, inputs: Tensor[]): RunData;
+}
+export declare function glslAbs(): GlslValueFunction;
+export declare function glslAcos(): GlslValueFunction;
+export declare function glslAsin(): GlslValueFunction;
+export declare function glslAtan(): GlslValueFunction;
+export declare function glslCeil(): GlslValueFunction;
+export declare function glslCos(): GlslValueFunction;
+export declare function glslExp(): GlslValueFunction;
+export declare function glslFloor(): GlslValueFunction;
+export declare function glslIdentity(): GlslValueFunction;
+export declare function glslLog(): GlslValueFunction;
+export declare function glslNeg(): GlslValueFunction;
+export declare function glslNot(): GlslValueFunction;
+export declare function glslSin(): GlslValueFunction;
+export declare function glslRelu(): GlslValueFunction;
+export declare function glslSigmoid(): GlslValueFunction;
+export declare function glslSqrt(): GlslValueFunction;
+export declare function glslTan(): GlslValueFunction;
+export declare function glslTanh(): GlslValueFunction;
