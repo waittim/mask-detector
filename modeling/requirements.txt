@@ -22,5 +22,3 @@ tqdm>=4.41.0
 
 # For windows, https://stackoverflow.com/questions/2213551/installing-scipy-with-pip, download the scipy manually
 # python -m pip install torch torchvision torchaudio-f https://download.pytorch.org/whl/torch_stable.html
-#py detect_onnx.py --source 0
-# html streaming py detect.py --source http://112.50.243.8/PLTV/88888888/224/3221225900/1.m3u8
