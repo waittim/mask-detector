@@ -3,10 +3,9 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
     <script>
-      const onnx = require('onnxjs-node') ;   
       async function test() {
         const sess = new onnx.InferenceSession()
-        await sess.loadModel('https://raw.githubusercontent.com/waittim/mask-detector/master/modeling/yolo-fastest.onnx')
+        await sess.loadModel('https://raw.githubusercontent.com/waittim/mask-detector/master/deployment/yolo-fastest.onnx')
         const input = new onnx.Tensor(new Float32Array(320 * 512 * 3), 'float32', [1, 3, 320, 512])
         const outputMap = await sess.run([input])
         const outputTensor = outputMap.values().next().value
