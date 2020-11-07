@@ -40,7 +40,9 @@ def create_modules(module_defs, img_size, cfg):
                                                        stride=stride,
                                                        padding=k // 2 if mdef['pad'] else 0,
                                                        groups=mdef['groups'] if 'groups' in mdef else 1,
-                                                       bias=not bn))
+                                                       bias=not bn,
+                                                       nbit_w=W_bit,
+                                                       nbit_a=A_bit))
             else:  # multiple-size conv
                 modules.add_module('MixConv2d', MixConv2d(in_ch=output_filters[-1],
                                                           out_ch=filters,
