@@ -29,7 +29,10 @@ def create_modules(module_defs, img_size, cfg):
         modules = nn.Sequential()
 
         if mdef['type'] == 'quantize_convolutional':
-            bn = mdef['batch_normalize']
+            try:
+                bn = mdef['batch_normalize']
+            except:
+                bn = 0
             filters = mdef['filters']
             k = mdef['size']  # kernel size
             stride = mdef['stride'] if 'stride' in mdef else (mdef['stride_y'], mdef['stride_x'])
