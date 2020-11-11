@@ -20,10 +20,10 @@ def detect(save_img=False):
         shutil.rmtree(out)  # delete output folder
     os.makedirs(out)  # make new output folder
 
-    # Second-stage classifier
+   # Second-stage classifier
     classify = False
     if classify:
-        modelc = load_classifier(name='resnet101', n=2)  # initialize
+        modelc = torch_utils.load_classifier(name='resnet101', n=2)  # initialize
         modelc.load_state_dict(torch.load('weights/resnet101.pt', map_location=device)['model'])  # load weights
         modelc.to(device).eval()
 
@@ -62,9 +62,6 @@ def detect(save_img=False):
         # pred = model(img, augment=opt.augment)[0]
         # print('The output shape: ',pred.shape)
 ############################################################
-
-
-
 
         ort_session = onnxruntime.InferenceSession(opt.onnx)
 
@@ -117,7 +114,7 @@ def detect(save_img=False):
                             file.write(('%g ' * 5 + '\n') % (cls, *xywh))  # label format
 
                     if save_img or view_img:  # Add bbox to image
-                        conf = torch.sigmoid(conf)
+                        conf = torch.sigmoid(conf/10)
                         label = '%s %.2f' % (names[int(cls)], conf)
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
