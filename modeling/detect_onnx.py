@@ -29,7 +29,7 @@ def detect(save_img=False):
 
 
     #import onnx
-    onnx_model = onnx.load('weights/yolo-fastest.onnx')
+    onnx_model = onnx.load(opt.onnx)
     onnx.checker.check_model(onnx_model)
 
     # Set Dataloader
@@ -66,7 +66,7 @@ def detect(save_img=False):
 
 
 
-        ort_session = onnxruntime.InferenceSession("weights/yolo-fastest.onnx")
+        ort_session = onnxruntime.InferenceSession(opt.onnx)
 
         def to_numpy(tensor):
             return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
@@ -156,7 +156,7 @@ def detect(save_img=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='weights/yolo-fastest.onnx', help='*.cfg path')
+    parser.add_argument('--onnx', type=str, default='weights/yolo-fastest.onnx', help='*.cfg path')
     parser.add_argument('--names', type=str, default='data/face_mask.names', help='*.names path')
     parser.add_argument('--weights', type=str, default='weights/yolo-fastest.onnx', help='weights path')
     parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')
     opt = parser.parse_args()
-    opt.cfg = check_file(opt.cfg)  # check file
+    opt.onnx = check_file(opt.onnx)  # check file
     opt.names = check_file(opt.names)  # check file
     print(opt)
 
