@@ -29,7 +29,7 @@ def detect(save_img=False):
 
 
     #import onnx
-    onnx_model = onnx.load('yolo-fastest.onnx')
+    onnx_model = onnx.load('weights/yolo-fastest.onnx')
     onnx.checker.check_model(onnx_model)
 
     # Set Dataloader
@@ -66,7 +66,7 @@ def detect(save_img=False):
 
 
 
-        ort_session = onnxruntime.InferenceSession("yolo-fastest.onnx")
+        ort_session = onnxruntime.InferenceSession("weights/yolo-fastest.onnx")
 
         def to_numpy(tensor):
             return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
@@ -156,9 +156,9 @@ def detect(save_img=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='yolo-fastest.onnx', help='*.cfg path')
+    parser.add_argument('--cfg', type=str, default='weights/yolo-fastest.onnx', help='*.cfg path')
     parser.add_argument('--names', type=str, default='data/face_mask.names', help='*.names path')
-    parser.add_argument('--weights', type=str, default='yolo-fastest.onnx', help='weights path')
+    parser.add_argument('--weights', type=str, default='weights/yolo-fastest.onnx', help='weights path')
     parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
     parser.add_argument('--output', type=str, default='output', help='output folder')  # output folder
     parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
