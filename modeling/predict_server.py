@@ -45,7 +45,7 @@ def upload():
             filepath = './' + app.config['UPLOAD_FOLDER'] + '/' + f.filename
             f.save(filepath)
 
-            detect(save_img = True, out = "static/images/test.jpg", source = filepath)
+            detect(save_img = True, out = "static/images", source = filepath)
             return render_template('upload_ok.html')
     return render_template('upload.html')
 

@@ -23,7 +23,7 @@ parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic 
 parser.add_argument('--augment', action='store_true', help='augmented inference')
 opt = parser.parse_args()
 
-def detect(save_img=False, out="static/images/test.jpg", source='data/samples/good_test.jpg'):
+def detect(save_img=True, out="static/images/test.jpg", source='data/samples/good_test.jpg'):
     imgsz = (320, 192) if ONNX_EXPORT else opt.img_size  # (320, 192) or (416, 256) or (608, 352) for (height, width)
     weights, half, view_img, save_txt = opt.weights, opt.half, opt.view_img, opt.save_txt
     webcam = source == '0' or source.startswith('rtsp') or source.startswith('http') or source.endswith('.txt')
@@ -128,7 +128,7 @@ def detect(save_img=False, out="static/images/test.jpg", source='data/samples/go
                 p, s, im0 = path, '', im0s
 
             #save_path = str(Path(out) / Path(p).name)
-            save_path = out
+            save_path = str(Path(out) / 'test.jpg')
             s += '%gx%g ' % img.shape[2:]  # print string
             gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  #  normalization gain whwh
             if det is not None and len(det):
