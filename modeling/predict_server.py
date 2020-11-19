@@ -11,20 +11,18 @@ from datetime import timedelta
 from detect1 import *
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'upload'  # 上传的文件保存目录
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}  # 允许的上传文件类型
+UPLOAD_FOLDER = 'upload'  # uploading dir
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}  # legal file type
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=5)
 print(app.config['SEND_FILE_MAX_AGE_DEFAULT'])
 
 
-#model = Darknet(opt.cfg, imgsz)  # 导入模型，以便节省Predict时间
 
 
 def allow_filename(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-    # 文件名必须有效
 
 
 @app.route('/upload', methods=['GET', 'POST'])
@@ -45,8 +43,12 @@ def upload():
             filepath = './' + app.config['UPLOAD_FOLDER'] + '/' + f.filename
             f.save(filepath)
 
-            detect(save_img = True, out = "static/images", source = filepath)
-            return render_template('upload_ok.html')
+            temp = str(detect(save_img = True, out = "static/images", source = filepath))
+
+            if "NoMask" in temp:
+                return render_template('upload_ok_Nomask.html')
+            else:
+                return render_template('upload_ok_mask.html')
     return render_template('upload.html')
 
 
