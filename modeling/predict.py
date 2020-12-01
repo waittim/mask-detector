@@ -1,3 +1,25 @@
+from __future__ import division
+
+from models import *
+from utils.utils import *
+from utils.datasets import *
+
+import os
+import sys
+import time
+import datetime
+import argparse
+
+from PIL import Image
+
+import torch
+from torch.utils.data import DataLoader
+from torchvision import datasets
+from torch.autograd import Variable
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib.ticker import NullLocator
 import argparse
 
 from models import *  # set ONNX_EXPORT in models.py
@@ -5,7 +27,7 @@ from utils.datasets import *
 from utils.utils import *
 
 
-def detect(save_img=True):
+def detect(save_img=False):
     imgsz = (320, 192) if ONNX_EXPORT else opt.img_size  # (320, 192) or (416, 256) or (608, 352) for (height, width)
     out, source, weights, half, view_img, save_txt = opt.output, opt.source, opt.weights, opt.half, opt.view_img, opt.save_txt
     webcam = source == '0' or source.startswith('rtsp') or source.startswith('http') or source.endswith('.txt')
@@ -111,7 +133,7 @@ def detect(save_img=True):
 
             save_path = str(Path(out) / Path(p).name)
             s += '%gx%g ' % img.shape[2:]  # print string
-            gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  #  normalization gain whwh
+            gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  #  normalization gain whwh
             if det is not None and len(det):
                 # Rescale boxes from imgsz to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
@@ -132,9 +154,10 @@ def detect(save_img=True):
                         label = '%s %.2f' % (names[int(cls)], conf)
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
+
             # Print time (inference + NMS)
             print('%sDone. (%.3fs)' % (s, t2 - t1))
-
+            print(label)
             # Stream results
             if view_img:
                 cv2.imshow(p, im0)
@@ -187,6 +210,3 @@ if __name__ == '__main__':
     opt.cfg = check_file(opt.cfg)  # check file
     opt.names = check_file(opt.names)  # check file
     print(opt)
-
-    with torch.no_grad():
-        detect()
