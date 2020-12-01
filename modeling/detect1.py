@@ -4,10 +4,28 @@ from models import *  # set ONNX_EXPORT in models.py
 from utils.datasets import *
 from utils.utils import *
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--cfg', type=str, default='cfg/yolo-fastest.cfg', help='*.cfg path')
+parser.add_argument('--names', type=str, default='data/face_mask.names', help='*.names path')
+parser.add_argument('--weights', type=str, default='weights/best.weights', help='weights path')
+parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
+parser.add_argument('--output', type=str, default='output', help='output folder')  # output folder
+parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
+parser.add_argument('--conf-thres', type=float, default=0.3, help='object confidence threshold')
+parser.add_argument('--iou-thres', type=float, default=0.6, help='IOU threshold for NMS')
+parser.add_argument('--fourcc', type=str, default='mp4v', help='output video codec (verify ffmpeg support)')
+parser.add_argument('--half', action='store_true', help='half precision FP16 inference')
+parser.add_argument('--device', default='', help='device id (i.e. 0 or 0,1) or cpu')
+parser.add_argument('--view-img', action='store_true', help='display results')
+parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
+parser.add_argument('--classes', nargs='+', type=int, help='filter by class')
+parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
+parser.add_argument('--augment', action='store_true', help='augmented inference')
+opt = parser.parse_args()
 
-def detect(save_img=True):
+def detect(save_img=True, out="static/images/test.jpg", source='data/samples/good_test.jpg'):
     imgsz = (320, 192) if ONNX_EXPORT else opt.img_size  # (320, 192) or (416, 256) or (608, 352) for (height, width)
-    out, source, weights, half, view_img, save_txt = opt.output, opt.source, opt.weights, opt.half, opt.view_img, opt.save_txt
+    weights, half, view_img, save_txt = opt.weights, opt.half, opt.view_img, opt.save_txt
     webcam = source == '0' or source.startswith('rtsp') or source.startswith('http') or source.endswith('.txt')
 
     # Initialize
@@ -109,17 +127,18 @@ def detect(save_img=True):
             else:
                 p, s, im0 = path, '', im0s
 
-            save_path = str(Path(out) / Path(p).name)
+            #save_path = str(Path(out) / Path(p).name)
+            save_path = str(Path(out) / 'test.jpg')
             s += '%gx%g ' % img.shape[2:]  # print string
-            gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  #  normalization gain whwh
+            gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  #  normalization gain whwh
             if det is not None and len(det):
                 # Rescale boxes from imgsz to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
 
                 # Print results
-                for c in det[:, -1].unique():
-                    n = (det[:, -1] == c).sum()  # detections per class
-                    s += '%g %ss, ' % (n, names[int(c)])  # add to string
+#                for c in det[:, -1].unique():
+#                    n = (det[:, -1] == c).sum()  # detections per class
+#                    s += '%g %ss, ' % (n, names[int(c)])  # add to string
 
                 # Write results
                 for *xyxy, conf, cls in det:
@@ -132,9 +151,10 @@ def detect(save_img=True):
                         label = '%s %.2f' % (names[int(cls)], conf)
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
+
             # Print time (inference + NMS)
             print('%sDone. (%.3fs)' % (s, t2 - t1))
-
+            print(label)
             # Stream results
             if view_img:
                 cv2.imshow(p, im0)
@@ -163,7 +183,7 @@ def detect(save_img=True):
             os.system('open ' + save_path)
 
     print('Done. (%.3fs)' % (time.time() - t0))
-
+    return label
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
