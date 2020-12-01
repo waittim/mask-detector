@@ -1,7 +1,7 @@
 
 ## Requirements
 
-Python 3.8 or later with all [requirements.txt](https://github.com/ultralytics/yolov3/blob/master/requirements.txt) dependencies installed, including `torch>=1.6`. To install run:
+Python 3.8, do not use python 3.9, with all [requirements.txt](https://github.com/ultralytics/yolov3/blob/master/requirements.txt) dependencies installed, including `torch>=1.6`. To install run:
 ```bash
 $ pip install -r requirements.txt
 ```
@@ -52,7 +52,12 @@ python3 detect.py --source ...
 
 **YOLO-Fastest with webcam:** `python3 detect.py --source 0`
 
+## Inference for flask single image
 
+```bash
+python3 predict_server.py
+```
+- Then enter http://localhost:2222/upload 
 
 
 ## Darknet Conversion
