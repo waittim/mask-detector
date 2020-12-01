@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ab8e223-053d-4a52-97a1-e95e6ab43835" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeling/20-PyTorch2ONNX.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/20-PyTorch2ONNX.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeling/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeling/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/templates/upload.html" afterDir="false" />
-    </list>
+    <list default="true" id="0ab8e223-053d-4a52-97a1-e95e6ab43835" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +80,7 @@
       <workItem from="1605797050540" duration="647000" />
       <workItem from="1606171611193" duration="966000" />
       <workItem from="1606800168175" duration="741000" />
+      <workItem from="1606837100975" duration="1377000" />
     </task>
     <servers />
   </component>
