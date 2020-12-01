@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0ab8e223-053d-4a52-97a1-e95e6ab43835" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeling/20-PyTorch2ONNX.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/20-PyTorch2ONNX.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeling/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/detect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeling/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/templates/upload.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\ninoy\Desktop\VandyDS\2020Fall\Case study\mask-detector\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jk5maJ0dv2rgIqfMJmtlgkcTe6" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/modeling/templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ninoy\Desktop\VandyDS\2020Fall\Case study\mask-detector\modeling" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ninoy\Desktop\VandyDS\2020Fall\Case study\mask-detector\modeling\templates" />
+      <recent name="C:\Users\ninoy\Desktop\VandyDS\2020Fall\Case study\mask-detector\flask_deploy" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ab8e223-053d-4a52-97a1-e95e6ab43835" name="Default Changelist" comment="" />
+      <created>1604335408319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604335408319</updated>
+      <workItem from="1604335413038" duration="601000" />
+      <workItem from="1604336082708" duration="459000" />
+      <workItem from="1604336645428" duration="3261000" />
+      <workItem from="1604339937397" duration="10392000" />
+      <workItem from="1604585387586" duration="2695000" />
+      <workItem from="1604591742520" duration="1606000" />
+      <workItem from="1604615232542" duration="4608000" />
+      <workItem from="1604621357725" duration="1356000" />
+      <workItem from="1604773597316" duration="498000" />
+      <workItem from="1605131011364" duration="691000" />
+      <workItem from="1605133263092" duration="7934000" />
+      <workItem from="1605193899627" duration="3606000" />
+      <workItem from="1605760011555" duration="1934000" />
+      <workItem from="1605797050540" duration="647000" />
+      <workItem from="1606171611193" duration="966000" />
+      <workItem from="1606800168175" duration="741000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
