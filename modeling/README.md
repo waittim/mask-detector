@@ -66,11 +66,11 @@ python3 predict_server.py
 
 # convert darknet cfg/weights to pytorch model
 $ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/best.weights')"
-Success: converted 'weights/yolov3-spp.weights' to 'weights/yolov3-spp.pt'
+Success: converted 'weights/best.pt' to 'weights/best.pt'
 
 # convert cfg/pytorch model to darknet weights
 $ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/best.pt')"
-Success: converted 'weights/yolov3-spp.pt' to 'weights/yolov3-spp.weights'
+Success: converted 'weights/best.pt' to 'weights/best.weights'
 ```
 
 ## Reproduce Our Environment
