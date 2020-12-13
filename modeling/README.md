@@ -63,14 +63,13 @@ python3 predict_server.py
 ## Darknet Conversion
 
 ```bash
-$ git clone https://github.com/ultralytics/yolov3 && cd yolov3
 
 # convert darknet cfg/weights to pytorch model
-$ python3  -c "from models import *; convert('cfg/yolov3-spp.cfg', 'weights/yolov3-spp.weights')"
+$ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/best.weights')"
 Success: converted 'weights/yolov3-spp.weights' to 'weights/yolov3-spp.pt'
 
 # convert cfg/pytorch model to darknet weights
-$ python3  -c "from models import *; convert('cfg/yolov3-spp.cfg', 'weights/yolov3-spp.pt')"
+$ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/best.pt')"
 Success: converted 'weights/yolov3-spp.pt' to 'weights/yolov3-spp.weights'
 ```
 
