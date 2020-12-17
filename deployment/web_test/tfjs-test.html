@@ -1,0 +1,21 @@
+
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.3"></script>
+    <script src="https://unpkg.com/tfjs-onnx"></script>
+    <script>
+      var modelUrl = 'https://raw.githubusercontent.com/waittim/mask-detector/master/modeling/weights/yolo-fastest-transfer.onnx';
+      // Initialize the tf.model
+      var model = new onnx.loadModel(modelUrl);
+
+      // Now use tf.model
+      const pixels = tf.fromPixels(img);
+      const predictions = model.predict(pixels);
+    </script>
+    <p>
+      The output of this debug demo is logged to the JavaScript
+      console. To view the output, open your browser's developer
+      tools window, and look under the "Console" tab.
+    </p>
+  </body>
+</html>

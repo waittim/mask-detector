@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/tractjs/dist/tractjs.min.js"></script>
+    <script>
+      tractjs.load("https://raw.githubusercontent.com/waittim/mask-detector/master/modeling/weights/yolo-fastest-sim.onnx").then((model) => {
+        model
+          .predict([new tractjs.Tensor(new Float32Array(320 * 512 * 3), [1, 3, 320, 512])])
+          .then((preds) => {
+            console.log(preds);
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+      The output of this debug demo is logged to the JavaScript
+      console. To view the output, open your browser's developer
+      tools window, and look under the "Console" tab.
+    </p>
+  </body>
+</html>

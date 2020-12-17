@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detecting result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <form action="" enctype='multipart/form-data' method='POST'>
+        <input type="file" name="file" style="margin-top:20px;"/>
+        <br>
+        <input type="submit" value="Detect" class="button-new" style="margin-top:15px;"/>
+    </form>
+    <img src="{{ url_for('static', filename= 'images/test.jpg',_t=val1) }}" width="400" height="400" alt=""/>
+</body>
+</html>
