@@ -52,13 +52,6 @@ python3 detect.py --source ...
 
 **YOLO-Fastest with webcam:** `python3 detect.py --source 0`
 
-## Inference for flask single image
-
-```bash
-python3 predict_server.py
-```
-- Then enter http://localhost:2222/upload 
-
 
 ## Darknet Conversion
 
