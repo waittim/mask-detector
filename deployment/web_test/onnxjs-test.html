@@ -5,7 +5,7 @@
     <script>
       async function test() {
         const sess = new onnx.InferenceSession()
-        await sess.loadModel('https://raw.githubusercontent.com/waittim/mask-detector/master/modeling/weights/yolo-fastest-transfer.onnx')
+        await sess.loadModel('https://raw.githubusercontent.com/waittim/mask-detector/master/modeling/weights/yolo-fastest.onnx')
         const input = new onnx.Tensor(new Float32Array(320 * 512 * 3), 'float32', [1, 3, 320, 512])
         const outputMap = await sess.run([input])
         const outputTensor = outputMap.values().next().value
