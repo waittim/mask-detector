@@ -47,7 +47,7 @@ If you want to convert the model to the ONNX format, please check [20-PyTorch2ON
 
 ### Deployment
 
-The deployment park works based on NCNN and WASM.
+The deployment part works based on NCNN and WASM.
 
 At first, you need to compile the NCNN library. For more details, you can visit [Tutorial for compiling NCNN library
 ](https://waittim.github.io/2020/11/10/build-ncnn/) to find the tutorial.
@@ -69,18 +69,19 @@ ncnnoptimize yolo-fastest.param yolo-fastest.bin yolo-fastest-opt.param yolo-fas
 Now you have the **yolo-fastest-opt.param** and **yolo-fastest-opt.bin** as our final model. For making it works in WASM format, you need to re-compile the NCNN library with WASM. you can visit [Tutorial for compiling NCNN with WASM
 ](https://waittim.github.io/2020/11/15/build-ncnn-wasm/) to find the tutorial. 
 
-Then you need to write a C++ program that calls the NCNN model as input the image data and return the model output. The [C++ code](https://github.com/waittim/facemask-detection/blob/master/yolo.cpp) I used have been uploaded in the [facemask-detection](https://github.com/waittim/facemask-detection) repository. 
+Then you need to write a C++ program that calls the NCNN model as input the image data and return the model output. The [C++ code](https://github.com/waittim/facemask-detection/blob/master/yolo.cpp) I used has been uploaded to the [facemask-detection](https://github.com/waittim/facemask-detection) repository. 
 
 Compile the C++ code by `emcmake cmake` and `emmake make`, you can get the **yolo.js**, **yolo.wasm**, **yolo.worker.js** and **yolo.data**. These files are the model in WASM format.
 
 After establishing the webpage, you can test it locally with the following steps:
 
-1. start a http server `python3 -m http.server 8888`
+1. start a HTTP server `python3 -m http.server 8888`
 2. launch google chrome browser, open chrome://flags and enable all experimental webassembly features
-3. re-launch google chrome browser, open http://127.0.0.1:8888/test.html and test it on one frame.
-4. re-launch google chrome browser, open http://127.0.0.1:8888/index.html and test it by webcam.
+3. re-launch google chrome browser, open http://127.0.0.1:8888/test.html, and test it on one frame.
+4. re-launch google chrome browser, open http://127.0.0.1:8888/index.html, and test it by webcam.
 
 To publish the webpage, you can use Github Pages as a free server. For more details about it, please visit https://pages.github.com/.
+
 
 ## Acknowledgement
 
