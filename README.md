@@ -43,7 +43,7 @@ There are some example cases:
 ![mask-examples.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/mask-examples.jpg)
 
 
-If you want to convert the model to the ONNX format, please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
+If you want to convert the model to the ONNX format (Not necessary), please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
 
 ### Deployment
 
