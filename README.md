@@ -40,8 +40,8 @@ $ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/be
 With the model you got, the inference could be performed directly in this format: `python3 detect.py --source ...` For instance, if you want to use your webcam, please run `python3 detect.py --source 0`.
 
 There are some example cases:
-![mask-examples.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/mask-examples.jpg)
 
+ <img src="https://github.com/waittim/waittim.github.io/raw/master/img/mask-examples.jpg" width = "600"  alt="examples" align=center />
 
 If you want to convert the model to the ONNX format (Not necessary), please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
 
