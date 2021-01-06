@@ -1,14 +1,12 @@
 # WearMask: Real-time In-browser Face Mask Detection
 
-## [[arXiv paper]](https://arxiv.org/abs/2101.00784) [[facemask-detection.com]](https://facemask-detection.com)
+###  [[arXiv paper]](https://arxiv.org/abs/2101.00784)  [[facemask-detection.com]](https://facemask-detection.com)
 
 ![products.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/products.jpg)
 
 
-## Guidance
 
-
-### Requirements
+## Requirements
 
 Please use Python 3.8 with all [requirements.txt](https://github.com/ultralytics/yolov3/blob/master/requirements.txt) dependencies installed, including `torch>=1.6`. Do not use python 3.9.
 
@@ -17,13 +15,15 @@ $ pip install -r requirements.txt
 ```
 
 
-### Modeling
+## Modeling
 
 The data has been saved in **../modeling/data/**, if you added any extra image and annotation, please re-run the code in [10-preparation-process.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/10-preparation-process.ipynb) to get the new training set and test set.
 
 The following steps work on Google Colab.
 
-Training the model: 
+### 1. Training
+
+Run this code to train the model based on the pretrained weights **yolo-fastest.weights** from COCO.
 ```bash
 $ python3 train.py --cfg yolo-fastest.cfg --data data/face_mask.data --weights weights/yolo-fastest.weights --epochs 120
 ```
@@ -36,19 +36,20 @@ After training, you can get the model weights [best.pt](https://github.com/waitt
 ```bash
 $ python3  -c "from models import *; convert('cfg/yolo-fastest.cfg', 'weights/best.pt')"
 ```
-
+### 2. Inference 
 With the model you got, the inference could be performed directly in this format: `python3 detect.py --source ...` For instance, if you want to use your webcam, please run `python3 detect.py --source 0`.
 
 There are some example cases:
 
  <img src="https://github.com/waittim/waittim.github.io/raw/master/img/mask-examples.jpg" width = "600"  alt="examples" align=center />
 
-If you want to convert the model to the ONNX format (Not necessary), please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
+Hint: If you want to convert the model to the ONNX format (Not necessary), please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
 
-### Deployment
+## Deployment
 
 The deployment part works based on NCNN and WASM.
 
+### 1. Pytorch to NCNN
 At first, you need to compile the NCNN library. For more details, you can visit [Tutorial for compiling NCNN library
 ](https://waittim.github.io/2020/11/10/build-ncnn/) to find the tutorial.
 
@@ -65,6 +66,7 @@ For compacting the model size, you can move the **yolo-fastest.param** and **yol
 ```bash
 ncnnoptimize yolo-fastest.param yolo-fastest.bin yolo-fastest-opt.param yolo-fastest-opt.bin 65536 
 ```
+### 2. NCNN to WASM
 
 Now you have the **yolo-fastest-opt.param** and **yolo-fastest-opt.bin** as our final model. For making it works in WASM format, you need to re-compile the NCNN library with WASM. you can visit [Tutorial for compiling NCNN with WASM
 ](https://waittim.github.io/2020/11/15/build-ncnn-wasm/) to find the tutorial. 
@@ -73,6 +75,7 @@ Then you need to write a C++ program that calls the NCNN model as input the imag
 
 Compile the C++ code by `emcmake cmake` and `emmake make`, you can get the **yolo.js**, **yolo.wasm**, **yolo.worker.js** and **yolo.data**. These files are the model in WASM format.
 
+### 3. Build webpage 
 After establishing the webpage, you can test it locally with the following steps:
 
 1. start a HTTP server `python3 -m http.server 8888`
