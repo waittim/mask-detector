@@ -1,4 +1,4 @@
-Attention: this folder is not about the in-browser deployment but the flask deployment. For in-browser solution, please check [facemask-detection](https://github.com/waittim/facemask-detection).
+Attention: this folder is not about the in-browser deployment but about the Flask deployment. For in-browser solution, please check [facemask-detection](https://github.com/waittim/facemask-detection).
 
 
 ## Requirements
@@ -9,7 +9,7 @@ $ pip install -r requirements.txt
 ```
 
 
-## Inference for flask single image
+## Inference by Flask for single image
 
 ```bash
 python3 predict_server.py
