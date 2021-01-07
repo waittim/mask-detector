@@ -1,6 +1,6 @@
 # WearMask: Real-time In-browser Face Mask Detection
 
-###  [[arXiv paper]](https://arxiv.org/abs/2101.00784)  [[facemask-detection.com]](https://facemask-detection.com)
+###  [[arXiv paper]](https://arxiv.org/abs/2101.00784)  [[Deployment repo]](https://github.com/waittim/facemask-detection)  [[facemask-detection.com]](https://facemask-detection.com)
 
 ![products.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/products.jpg)
 
@@ -76,7 +76,7 @@ Then you need to write a C++ program that calls the NCNN model as input the imag
 Compile the C++ code by `emcmake cmake` and `emmake make`, you can get the **yolo.js**, **yolo.wasm**, **yolo.worker.js** and **yolo.data**. These files are the model in WASM format.
 
 ### 3. Build webpage 
-After establishing the webpage, you can test it locally with the following steps in this [repo](https://github.com/waittim/facemask-detection):
+After establishing the webpage, you can test it locally with the following steps in the [facemask-detection](https://github.com/waittim/facemask-detection) repository:
 
 1. start a HTTP server `python3 -m http.server 8888`
 2. launch google chrome browser, open chrome://flags and enable all experimental webassembly features
