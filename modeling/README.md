@@ -49,6 +49,7 @@ python3 detect.py --source ...
 
 
 **YOLO-Fastest with webcam:** `python3 detect.py --source 0`
+
 **YOLO-Fastest onnx model with webcam:** `python3 detect_onnx.py --source 0`
 
 
