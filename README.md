@@ -1,6 +1,6 @@
 # WearMask: Real-time In-browser Face Mask Detection
 
-###  [[arXiv paper]](https://arxiv.org/abs/2101.00784)  [[Deployment repo]](https://github.com/waittim/facemask-detection)  [[facemask-detection.com]](https://facemask-detection.com)
+###  [facemask-detection.com](https://facemask-detection.com) | [arXiv](https://arxiv.org/abs/2101.00784) | [Deployment part](https://github.com/waittim/facemask-detection) 
 
 ![products.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/products.jpg)
 
@@ -17,7 +17,7 @@ $ pip install -r requirements.txt
 
 ## Modeling
 
-The data has been saved in **../modeling/data/**, if you added any extra image and annotation, please re-run the code in [10-preparation-process.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/10-preparation-process.ipynb) to get the new training set and test set.
+The data has been saved in `./modeling/data/`, if you added any extra image and annotation, please re-run the code in [**10-preparation-process.ipynb**](https://github.com/waittim/mask-detector/blob/master/modeling/10-preparation-process.ipynb) to get the new training set and test set.
 
 The following steps work on Google Colab.
 
@@ -43,7 +43,7 @@ There are some example cases:
 
  <img src="https://github.com/waittim/waittim.github.io/raw/master/img/mask-examples.jpg" width = "600"  alt="examples" align=center />
 
-Hint: If you want to convert the model to the ONNX format (Not necessary), please check [20-PyTorch2ONNX.ipynb](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
+Hint: If you want to convert the model to the ONNX format (Not necessary), please check [**20-PyTorch2ONNX.ipynb**](https://github.com/waittim/mask-detector/blob/master/modeling/20-PyTorch2ONNX.ipynb)
 
 ## Deployment
 
