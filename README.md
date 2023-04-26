@@ -1,6 +1,6 @@
 # WearMask: Real-time In-browser Face Mask Detection
 
-###  [facemask-detection.com](https://facemask-detection.com) | [arXiv](https://arxiv.org/abs/2101.00784) | [Deployment part](https://github.com/waittim/facemask-detection) 
+###  [facemask-detection.com](https://facemask-detection.com) | [Paper](https://doi.org/10.2352/EI.2023.35.11.HPCI-229) | [Deployment part](https://github.com/waittim/facemask-detection) 
 
 ![products.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/products.jpg)
 
