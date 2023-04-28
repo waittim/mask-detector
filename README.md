@@ -91,5 +91,17 @@ To publish the webpage, you can use Github Pages as a free server. For more deta
 The modeling part is modified based on the code from [Ultralytics](https://github.com/ultralytics/yolov3). The model used is modified from the [Yolo-Fastest](https://github.com/dog-qiuqiu/Yolo-Fastest) model shared by dog-qiuqiu. Thanks to [nihui](https://github.com/nihui), the author of NCNN, for her help in the NCNN and WASM approach.
 
 
-
+## Citation
+```
+@article{
+    wang_wang_louis_wheless_huo_2023, 
+    title={WearMask: Fast in-browser face mask detection with serverless edge computing for covid-19}, 
+    volume={35}, 
+    DOI={10.2352/ei.2023.35.11.hpci-229}, 
+    number={11}, 
+    journal={Electronic Imaging}, 
+    author={Wang, Zekun and Wang, Pengwei and Louis, Peter C. and Wheless, Lee E. and Huo, Yuankai}, 
+    year={2023}
+} 
+```
 
