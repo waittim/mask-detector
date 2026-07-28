@@ -2,8 +2,6 @@
 
 ###  [facemask-detection.com](https://facemask-detection.com) | [Paper](https://doi.org/10.2352/EI.2023.35.11.HPCI-229) | [Data](https://github.com/waittim/mask-detector/tree/master/modeling/data) | [Deployment part](https://github.com/waittim/facemask-detection) 
 
-![products.jpg](https://github.com/waittim/waittim.github.io/raw/master/img/products.jpg)
-
 
 
 ## Requirements
